@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MMS">
+  <!-- Azul do header do site (#0C2447). Monograma desenhado em path, não em texto:
+       favicon não herda as fontes da página, então texto renderizaria diferente
+       em cada sistema. -->
+  <rect width="64" height="64" rx="14" fill="#0C2447"/>
+  <path d="M11 46 V18 H18.5 L32 33.5 L45.5 18 H53 V46 H45 V29.5 L32 44.5 L19 29.5 V46 Z" fill="#ffffff"/>
+</svg>

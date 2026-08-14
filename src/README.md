@@ -8,6 +8,9 @@ O `index.html` da raiz é **gerado**. Edite aqui e rode `python3 build.py`.
 | `page.html` | Marcação da página inteira (uma SPA de 6 telas, estilos inline). Os `{{ nome }}` são bindings resolvidos pelo `renderVals()` do `component.js`. | ✅ |
 | `props.json` | Telefone, 0800, WhatsApp e e-mail. Trocar contato é só aqui. | ✅ |
 | `assets/` | Imagens, fontes e o runtime. `assets.json` mapeia UUID → arquivo. | ✅ imagens/fontes |
+| `assets/favicon.svg` | Ícone da aba: monograma **M** branco sobre o azul do header (`#0C2447`). Desenhado em `path`, não em texto — favicon não herda as fontes da página. | ✅ |
+| `assets/favicon-32.png` | Mesmo desenho em 32×32, porque o Safari não lê favicon SVG. | ⚠️ regerar junto com o `.svg` |
+| `assets/apple-touch-icon.png` | 180×180 com o logo real sobre o azul — ícone de tela inicial no iOS. | ⚠️ |
 | `assets/runtime-*.js.gz` | Runtime do framework (`DCLogic`), gzipado. Vendor. | ❌ |
 | `loader.js` | Descompacta o manifest e monta a página no browser. Vendor. | ❌ |
 | `shell.html` | Esqueleto do arquivo gerado (tela de loading + os `<script>` do bundle). | ⚠️ raramente |
@@ -31,6 +34,20 @@ python3 build.py --check   # falha se o index.html estiver defasado em relação
 
 O `Dockerfile` roda o `build.py` numa etapa própria, então **o deploy sempre sai do `src/`** —
 um `index.html` desatualizado no git não vai parar em produção.
+
+## Favicon
+
+O `build.py` embute o `.svg` e o `.png` de 32 px como **data: URI** no `<head>` — tanto do
+`page.html` quanto do `shell.html`, porque o loader troca o `documentElement` inteiro e o
+ícone precisa estar dos dois lados. Assim a página segue autocontida.
+
+O **apple-touch-icon é a exceção**: o iOS ignora `data:` URI, então ele vai como arquivo de
+verdade em `/apple-touch-icon.png` (o `Dockerfile` copia pro nginx). Abrindo por `file://`
+ou no preview local esse aqui não aparece — só os outros dois.
+
+Se um dia a MMS mandar um símbolo quadrado do manual de marca, é só trocar os arquivos e
+rodar o `build.py`; nada mais muda. Os PNGs foram gerados por script (`zlib` puro, sem PIL) —
+se precisar refazer, os scripts estão descritos no commit que introduziu o favicon.
 
 ## Onde fica o simulador
 

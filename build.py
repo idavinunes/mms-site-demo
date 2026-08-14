@@ -17,6 +17,22 @@ SRC = ROOT / 'src'
 OUT = ROOT / 'index.html'
 
 
+def icons() -> str:
+    """Links de favicon, com as imagens embutidas como data: URI.
+
+    Embutir mantém a página autocontida (abre por file:// com o ícone certo).
+    O apple-touch-icon é a exceção: o iOS ignora data: URI, então ele também vai
+    como arquivo de verdade em /apple-touch-icon.png (ver Dockerfile).
+    """
+    def data_uri(nome, mime):
+        b64 = base64.b64encode((SRC / 'assets' / nome).read_bytes()).decode('ascii')
+        return f'data:{mime};base64,{b64}'
+
+    return (f'<link rel="icon" type="image/svg+xml" href="{data_uri("favicon.svg", "image/svg+xml")}">'
+            f'<link rel="icon" type="image/png" sizes="32x32" href="{data_uri("favicon-32.png", "image/png")}">'
+            f'<link rel="apple-touch-icon" href="/apple-touch-icon.png">')
+
+
 def build() -> str:
     shell = (SRC / 'shell.html').read_text(encoding='utf-8')
     page = (SRC / 'page.html').read_text(encoding='utf-8')
@@ -25,9 +41,14 @@ def build() -> str:
     props = json.loads((SRC / 'props.json').read_text(encoding='utf-8'))
     index = json.loads((SRC / 'assets' / 'assets.json').read_text(encoding='utf-8'))
 
-    # 1) componente + props entram no template
+    # 1) componente + props + favicons entram no template
     props_attr = json.dumps(props, ensure_ascii=False, separators=(',', ':')).replace('"', '&quot;')
-    template = page.replace('{{PROPS}}', props_attr).replace('{{COMPONENT}}', component)
+    ic = icons()
+    template = (page.replace('{{PROPS}}', props_attr)
+                    .replace('{{COMPONENT}}', component)
+                    .replace('{{ICONS}}', ic))
+    shell = shell.replace('{{ICONS}}', ic)   # o loader troca o documento inteiro:
+                                             # o ícone precisa estar nos dois lados
 
     # 2) assets viram base64 no manifest, na ordem do assets.json
     manifest = {
