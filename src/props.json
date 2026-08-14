@@ -1,0 +1,26 @@
+{
+  "$preview": {
+    "width": 1280,
+    "height": 900
+  },
+  "tel0800": {
+    "editor": "text",
+    "default": "0800 042 0229",
+    "tsType": "string"
+  },
+  "phone": {
+    "editor": "text",
+    "default": "(00) 00000-0000",
+    "tsType": "string"
+  },
+  "whatsapp": {
+    "editor": "text",
+    "default": "5500000000000",
+    "tsType": "string"
+  },
+  "email": {
+    "editor": "text",
+    "default": "contato@mmsconsignados.com.br",
+    "tsType": "string"
+  }
+}

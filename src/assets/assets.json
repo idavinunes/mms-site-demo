@@ -1,0 +1,67 @@
+{
+  "b25ebf7c-5244-4bd0-a92b-d2e875f58dc5": {
+    "file": "logo-mms.png",
+    "mime": "image/png",
+    "compressed": false
+  },
+  "0da18e0d-3fe2-4c84-a61d-ca32172b26e8": {
+    "file": "selo-ra1000.png",
+    "mime": "image/png",
+    "compressed": false
+  },
+  "f95ae4b6-6e9c-4b51-9d68-e5e311befa39": {
+    "file": "runtime-f95ae4b6.js.gz",
+    "mime": "text/javascript",
+    "compressed": true
+  },
+  "06164a79-c2f4-4b90-afb4-5b188cc53c7a": {
+    "file": "runtime-06164a79.js.gz",
+    "mime": "text/javascript",
+    "compressed": true
+  },
+  "5bbbe526-c9c5-4139-8aab-627ecbd34b1a": {
+    "file": "mulish-cyrillic-ext.woff2",
+    "mime": "font/woff2",
+    "compressed": false
+  },
+  "9444c0b9-df2d-400f-b65d-83e48b0c300b": {
+    "file": "mulish-cyrillic.woff2",
+    "mime": "font/woff2",
+    "compressed": false
+  },
+  "18ab079b-120c-4753-b73b-c4a2d95003d8": {
+    "file": "mulish-vietnamese.woff2",
+    "mime": "font/woff2",
+    "compressed": false
+  },
+  "8eb62378-832b-4c6a-99a5-5c26905c6c28": {
+    "file": "mulish-latin-ext.woff2",
+    "mime": "font/woff2",
+    "compressed": false
+  },
+  "0454533d-d33b-42e6-8ce5-058e4fff4006": {
+    "file": "mulish-latin.woff2",
+    "mime": "font/woff2",
+    "compressed": false
+  },
+  "74f979c2-df46-4746-a2d9-5aed3979c642": {
+    "file": "plus-jakarta-sans-cyrillic-ext.woff2",
+    "mime": "font/woff2",
+    "compressed": false
+  },
+  "7fe4b16e-ce5b-44e9-b9ff-2ab5abb76730": {
+    "file": "plus-jakarta-sans-vietnamese.woff2",
+    "mime": "font/woff2",
+    "compressed": false
+  },
+  "9da34623-ebe1-4ada-ac2c-b365c8aed35d": {
+    "file": "plus-jakarta-sans-latin-ext.woff2",
+    "mime": "font/woff2",
+    "compressed": false
+  },
+  "528c77f8-878c-4f1e-b504-74ce86babb80": {
+    "file": "plus-jakarta-sans-latin.woff2",
+    "mime": "font/woff2",
+    "compressed": false
+  }
+}
