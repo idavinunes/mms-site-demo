@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     let template = JSON.parse(templateEl.textContent);
 
     const uuids = Object.keys(manifest);
-    setStatus('Unpacking ' + uuids.length + ' assets...');
+    setStatus('Carregando\u2026');
 
     const blobUrls = {};
     await Promise.all(uuids.map(async (uuid) => {
